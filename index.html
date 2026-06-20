@@ -311,8 +311,8 @@
             transform: scale(1.05);
         }
 
-        /* 🥒 بوكس صورة المخلل اللطيفة المتحركة المحددة بالحجم الصغير المتناسق */
-        .pickle-gif-box {
+        /* 🥒 بوكس صورة المخلل الخاصة المحددة بحجم صغير ناعم ومتناسق */
+        .pickle-img-box {
             display: none;
             justify-content: center;
             margin: 15px 0;
@@ -320,8 +320,8 @@
             transition: opacity 0.4s ease;
         }
 
-        .pickle-gif-box img {
-            width: 75px; /* حجم صغير جداً ولطيف ومناسب للكلام */
+        .pickle-img-box img {
+            width: 75px; /* مقاس صغير جداً ولطيف ومناسب لمستوى الكلام */
             height: auto;
             border-radius: 15px;
             filter: drop-shadow(0 0 10px rgba(179, 157, 219, 0.4));
@@ -390,6 +390,7 @@
     <div class="aurora-bg"></div>
     <div class="stars-container" id="starsContainer"></div>
 
+    <!-- البداية: السؤال الفلسفي الغامض -->
     <div class="card-container active-card" id="introQuestion">
         <div class="icon-art">🌌</div>
         <h2 class="en-text" style="direction: ltr;">What is the meaning of life?</h2>
@@ -397,6 +398,7 @@
         <button class="action-btn" onclick="submitLifeAnswer()">Submit</button>
     </div>
 
+    <!-- صدمة الجواب الرومانسية اللطيفة -->
     <div class="card-container" id="introReveal">
         <div class="icon-art">🪐</div>
         <p class="en-text" style="direction: ltr;">
@@ -408,14 +410,16 @@
         <button class="action-btn" onclick="nextCard('introReveal', 'q1')">تابعي الرحلة ✨</button>
     </div>
 
+    <!-- السؤال الأول -->
     <div class="card-container" id="q1">
         <div class="icon-art">✨</div>
-        <h2>لو كانت الابتسامات تصنع مجرة، كم مجرة تظنين أنكِ صنعتِ بابتسامتكِ اليوم？</h2>
+        <h2>لو كانت الابتسامات تصنع مجرة، كم مجرة تظنين أنكِ صنعتِ بابتسامتكِ اليوم؟</h2>
         <button class="option-btn" onclick="nextCard('q1', 'q2')">مجرة واحدة دافئة 🌌</button>
         <button class="option-btn" onclick="nextCard('q1', 'q2')">كونٌ كامل لا ينتهي 🪐</button>
         <button class="option-btn" onclick="nextCard('q1', 'q2')">لستُ متأكدة، لكن العالم أضاء فجأة 🤍</button>
     </div>
 
+    <!-- السؤال الثاني -->
     <div class="card-container" id="q2">
         <div class="icon-art">🔮</div>
         <h2>ما هو لونكِ المفضل عندما تشعرين بالسلام والهدوء التام؟</h2>
@@ -424,6 +428,7 @@
         <button class="option-btn" onclick="nextCard('q2', 'q3')">كحلي ليلي مليء بالنجوم 🌌</button>
     </div>
 
+    <!-- السؤال الثالث وتحديد التاريخ -->
     <div class="card-container" id="q3">
         <div class="icon-art">⏳</div>
         <h2>تاريخ واحد مميز غيّر مجرى السماء للأبد وأهدى الأرض أرقّ النجمات.. هل تعرفينه؟</h2>
@@ -431,6 +436,7 @@
         <button class="action-btn" onclick="showFinalMagic()">فتح صندوق السماء</button>
     </div>
 
+    <!-- المفاجأة النهائية المكتملة السحر -->
     <div class="card-container" id="finalMagic">
         <div class="cosmic-star"></div>
         <div class="final-message">
@@ -440,6 +446,7 @@
             <span class="highlight-text">كل عام وأنتِ العيد ونوري الدائم 🤍</span>
         </div>
 
+        <!-- 🪐 كواكب الأمنيات الطائرة حول الرسالة -->
         <div class="planets-orbit" id="planetsBox">
             <div class="planet-item" style="--p-delay: 4s;" onclick="openSecret('secret')">
                 <div class="planet-sphere"></div>
@@ -455,6 +462,7 @@
             </div>
         </div>
 
+        <!-- 🎬 القسم المخصص: السؤال الأخير والقصة العاطفية المربوطة بصورتك المخصصة للمخلل -->
         <div class="last-question-zone" id="lastQBox">
             <div class="last-q-title" id="lastQTitle">One last question…</div>
             
@@ -463,10 +471,12 @@
                 <button class="mini-btn" onclick="triggerStory()">No</button>
             </div>
 
-            <div class="pickle-gif-box" id="pickleGifBox">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5MzlwdXdwemZleDJnMzFscWF6djE0czU2OHd6a3h3bHBtZGFkMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Wp09867MInSFFv0uU7/giphy.gif" alt="Cute Happy Pickle">
+            <!-- 🥒 بوكس صورتك الخاصة المرفوعة باسم pickle.png بحجم صغير ناعم ولطيف 😄 -->
+            <div class="pickle-img-box" id="pickleImgBox">
+                <img src="pickle.png" alt="Our Special Pickle">
             </div>
 
+            <!-- الكلمات والسطور العميقة المخرجة تلو الأخرى -->
             <div class="story-lines" id="storyLinesBox">
                 <div class="story-line" id="line1">Still doing this after all this time.</div>
                 <div class="story-line" id="line2">Some things never changed.</div>
@@ -476,6 +486,7 @@
         </div>
     </div>
 
+    <!-- النافذة المنبثقة للرسائل المخبأة -->
     <div class="planet-modal" id="planetModal" onclick="closeSecret()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-text" id="modalText"></div>
@@ -524,16 +535,16 @@
             }, 700);
         }
 
-        // 🎬 منطق تشغيل الأزرار وظهور المخلل اللطيف ثم توالي العبارات العاطفية
+        // 🎬 منطق تشغيل الأزرار وظهور صورتك الخاصة للمخلل ثم توالي العبارات العاطفية
         function triggerStory() {
             document.getElementById('lastBtnRow').style.opacity = '0';
             setTimeout(() => { document.getElementById('lastBtnRow').style.display = 'none'; }, 400);
             
-            const pickleBox = document.getElementById('pickleGifBox');
+            const pickleBox = document.getElementById('pickleImgBox');
             pickleBox.style.display = 'flex';
             setTimeout(() => { pickleBox.style.opacity = '1'; }, 100);
 
-            // يرقص المخلل اللطيف لثانيتين ونصف، ثم يختفي لتنزل العبارات بتأثير هادئ ورومانسي
+            // تظهر الصورة الخاصة لثانيتين ونصف، ثم تختفي بنعومة لتنزل العبارات الإنجليزية بتتابع دافئ
             setTimeout(() => {
                 pickleBox.style.opacity = '0';
                 setTimeout(() => { pickleBox.style.display = 'none'; }, 500);
