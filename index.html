@@ -311,19 +311,39 @@
             transform: scale(1.05);
         }
 
-        /* أنيميشن هز الأكتاف العفوي اللطيف (Shrug Animation) */
-        .shrug-container {
+        /* ✨ أنيميشن الأكتاف الواقعي والحركي باستخدام الرسومات الخطية المضيئة */
+        .shrug-art-container {
             display: none;
-            font-size: 1.8rem;
-            margin: 15px 0;
-            color: #e1bee7;
-            animation: shrugShake 0.4s ease infinite;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
-        @keyframes shrugShake {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-3px) rotate(-3deg); }
-            75% { transform: translateY(2px) rotate(3deg); }
+        .shrug-character {
+            width: 60px;
+            height: 60px;
+        }
+
+        .shrug-svg {
+            width: 100%;
+            height: 100%;
+            stroke: #e1bee7;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+        }
+
+        /* حركة هز الأكتاف العضوية الواقعية للأذرع */
+        .shrug-arms {
+            animation: organicShrug 0.5s ease infinite alternate;
+            transform-origin: 30px 45px;
+        }
+
+        @keyframes organicShrug {
+            0% { transform: translateY(0) scaleY(1); }
+            100% { transform: translateY(-8px) scaleY(0.85); stroke: #b39ddb; filter: drop-shadow(0 0 5px rgba(179,157,219,0.8)); }
         }
 
         /* نصوص النهاية العميقة المتتابعة بالإنجليزية */
@@ -430,7 +450,7 @@
     <!-- السؤال الثالث وتحديد التاريخ -->
     <div class="card-container" id="q3">
         <div class="icon-art">⏳</div>
-        <h2>تاريخ واحد مميز غيّر مجرى السماء للأبد وأهدى الأرض أرقّ النجمات.. هل تعرفينه？</h2>
+        <h2>تاريخ واحد مميز غيّر مجرى السماء للأبد وأهدى الأرض أرقّ النجمات.. هل تعرفينه؟</h2>
         <input type="date" id="birthDate"><br>
         <button class="action-btn" onclick="showFinalMagic()">فتح صندوق السماء</button>
     </div>
@@ -461,7 +481,7 @@
             </div>
         </div>
 
-        <!-- 🎬 القسم الجديد المخصص: السؤال الأخير والقصة العاطفية -->
+        <!-- 🎬 القسم المخصص: السؤال الأخير والقصة العاطفية مع أنميشن الأكتاف الجديد -->
         <div class="last-question-zone" id="lastQBox">
             <div class="last-q-title" id="lastQTitle">One last question…</div>
             
@@ -470,8 +490,25 @@
                 <button class="mini-btn" onclick="triggerStory()">No</button>
             </div>
 
-            <!-- أنيميشن هز الأكتاف اللطيف ع الطريقة النصية الكوميدية 😄 -->
-            <div class="shrug-container" id="shrugAnim">¯\_(ツ)_/¯ &nbsp; ¯\_(ツ)_/¯</div>
+            <!-- الأنميشن الحركي الفخم والواقعي الجديد لشخصيتين يهزان أكتافهما دبل لايف -->
+            <div class="shrug-art-container" id="shrugArtBox">
+                <!-- الشخصية الأولى -->
+                <div class="shrug-character">
+                    <svg class="shrug-svg" viewBox="0 0 60 60">
+                        <circle cx="30" cy="20" r="8"/>
+                        <path class="shrug-arms" d="M10,35 Q15,22 20,28 L30,32 L40,28 Q45,22 50,35"/>
+                        <path d="M30,28 L30,48 M20,55 L30,48 L40,55"/>
+                    </svg>
+                </div>
+                <!-- الشخصية الثانية -->
+                <div class="shrug-character">
+                    <svg class="shrug-svg" viewBox="0 0 60 60" style="stroke: #ce93d8;">
+                        <circle cx="30" cy="20" r="8"/>
+                        <path class="shrug-arms" d="M10,35 Q15,22 20,28 L30,32 L40,28 Q45,22 50,35" style="animation-delay: -0.25s;"/>
+                        <path d="M30,28 L30,48 M20,55 L30,48 L40,55"/>
+                    </svg>
+                </div>
+            </div>
 
             <!-- الكلمات والسطور العميقة المخرجة تلو الأخرى -->
             <div class="story-lines" id="storyLinesBox">
@@ -532,26 +569,25 @@
             }, 700);
         }
 
-        // 🎬 منطق تشغيل الأزرار وعرض الأنميشن والكلمات بالتتابع المريح
+        // 🎬 منطق الأزرار وعرض أنميشن الأكتاف الواقعي الجديد والقصة بالتتابع
         function triggerStory() {
-            // إخفاء الأزرار وإظهار حركة هز الأكتاف الكوميدية
             document.getElementById('lastBtnRow').style.opacity = '0';
             setTimeout(() => { document.getElementById('lastBtnRow').style.display = 'none'; }, 400);
             
-            const shrug = document.getElementById('shrugAnim');
-            shrug.style.display = 'block';
+            const shrugBox = document.getElementById('shrugArtBox');
+            shrugBox.style.display = 'flex';
+            setTimeout(() => { shrugBox.style.opacity = '1'; }, 500);
 
-            // بعد ثانيتين تختفي حركة هز الأكتاف ويبدأ نزول الكلام الساحر سطر ورا سطر
+            // بعد ثانيتين ونصف يختفي الأنميشن بنعومة وينزل الكلام
             setTimeout(() => {
-                shrug.style.opacity = '0';
-                setTimeout(() => { shrug.style.display = 'none'; }, 500);
+                shrugBox.style.opacity = '0';
+                setTimeout(() => { shrugBox.style.display = 'none'; }, 500);
 
-                // تتابع ظهور العبارات الإنجليزية بنعومة بالغة
                 setTimeout(() => { document.getElementById('line1').classList.add('reveal-line'); }, 200);
                 setTimeout(() => { document.getElementById('line2').classList.add('reveal-line'); }, 1800);
                 setTimeout(() => { document.getElementById('line3').classList.add('reveal-line'); }, 3400);
-                setTimeout(() => { document.getElementById('line4').classList.add('reveal-line'); document.getElementById('line4').style.color = '#e1bee7'; document.getElementById('line4').style.fontWeight = 'bold'; }, 5000);
-            }, 1800);
+                setTimeout(() => { document.getElementById('line4').classList.add('reveal-line'); }, 5000);
+            }, 2300);
         }
 
         const texts = {
