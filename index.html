@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكانٌ سرّي ✨</title>
+    <style>
+        /* تصميم الأجواء العامة - ألوان ناعمة وليلية */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0b0914; /* كحلي لافندر داكن جداً */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f3effa;
+        }
+
+        /* خلفية النجوم المتحركة ببطء */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0;
+            transition: opacity 3s ease-in-out;
+            z-index: 1;
+        }
+
+        /* الواجهة الأولى: الغموض والطلب */
+        .intro-container {
+            text-align: center;
+            z-index: 2;
+            transition: all 1.5s ease-in-out;
+            padding: 20px;
+        }
+
+        h2 {
+            font-weight: 300;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            color: #d1c4e9;
+        }
+
+        input[type="date"] {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #7e57c2;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(126, 87, 194, 0.2);
+        }
+
+        button {
+            background: #7e57c2;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(126, 87, 194, 0.4);
+        }
+
+        button:hover {
+            background: #9575cd;
+            transform: scale(1.05);
+        }
+
+        /* واجهة المفاجأة: الرسالة والنجمة */
+        .content-container {
+            position: absolute;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 2.5s ease-in-out;
+            z-index: 2;
+            max-width: 80%;
+            pointer-events: none;
+        }
+
+        /* النجمة المشعة الكبيرة في المنتصف */
+        .main-star {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin: 0 auto 30px auto;
+            box-shadow: 0 0 40px 20px rgba(255, 255, 255, 0.4);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 30px 10px rgba(209, 196, 233, 0.5); }
+            50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 50px 25px rgba(255, 255, 255, 0.7); }
+        }
+
+        .message {
+            font-size: 1.3rem;
+            line-height: 2;
+            font-weight: 300;
+            color: #ede7f6;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .highlight {
+            color: #b39ddb;
+            font-weight: 400;
+            display: block;
+            margin-top: 15px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="starsBg"></div>
+
+    <!-- واجهة السؤال -->
+    <div class="intro-container" id="introBox">
+        <h2>أدخلي تاريخاً مميزاً لفتح السماء.. ✨</h2>
+        <input type="date" id="birthDate" id="dateInput"><br>
+        <button onclick="revealMagic()">تأكيد</button>
+    </div>
+
+    <!-- واجهة النجوم والرسالة -->
+    <div class="content-container" id="contentBox">
+        <div class="main-star"></div>
+        <div class="message">
+            في مثل هذا اليوم، تآمرت السماء لتصنع حدثاً استثنائياً.. <br>
+            رُسمت النجوم بدقة، وتألقت المجرات، <br>
+            لتُهدي الأرض أرقّ وأجمل نجمة تضيء كوني بالكامل.
+            <span class="highlight">كل عام وأنتِ العيد ونوري الدائم 🤍</span>
+        </div>
+    </div>
+
+    <script>
+        function revealMagic() {
+            const dateInput = document.getElementById('birthDate').value;
+            if (!dateInput) {
+                alert('الرجاء اختيار التاريخ أولاً بلمسة ناعمة 🌟');
+                return;
+            }
+
+            // إخفاء الواجهة الأولى بنعومة
+            const intro = document.getElementById('introBox');
+            intro.style.opacity = '0';
+            intro.style.transform = 'translateY(-20px)';
+            
+            setTimeout(() => {
+                intro.style.display = 'none';
+                
+                // إظهار النجوم في الخلفية
+                const stars = document.getElementById('starsBg');
+                stars.style.opacity = '1';
+                
+                // إظهار الرسالة والنجمة المشعة
+                const content = document.getElementById('contentBox');
+                content.style.opacity = '1';
+                content.style.transform = 'scale(1)';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
