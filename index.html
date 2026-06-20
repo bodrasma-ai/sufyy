@@ -311,7 +311,7 @@
             transform: scale(1.05);
         }
 
-        /* 🥒 بوكس صورة المخلل الخاصة المحددة بحجم صغير ناعم ومتناسق */
+        /* 🥒 بوكس صورة المخلل الخاصة */
         .pickle-img-box {
             display: none;
             justify-content: center;
@@ -321,7 +321,7 @@
         }
 
         .pickle-img-box img {
-            width: 75px; /* مقاس صغير جداً ولطيف ومناسب لمستوى الكلام */
+            width: 75px; 
             height: auto;
             border-radius: 15px;
             filter: drop-shadow(0 0 10px rgba(179, 157, 219, 0.4));
@@ -349,11 +349,31 @@
             transform: translateY(0);
         }
 
+        /* ✨ أنيميشن الجملة المضيئة والنابضة اللي بتتنفس */
         .final-heart-text {
             color: #e1bee7;
             font-weight: bold;
-            font-size: 1.2rem;
-            text-shadow: 0 0 15px rgba(225, 190, 231, 0.8);
+            font-size: 1.15rem;
+            text-shadow: 0 0 15px rgba(225, 190, 231, 0.6);
+            display: inline-block;
+        }
+
+        /* أنيميشن التنفس الكوني الناعم جداً والتوهج المتغير ببطء */
+        .breathing-glow {
+            animation: textBreathe 3.5s infinite ease-in-out;
+        }
+
+        @keyframes textBreathe {
+            0%, 100% { 
+                transform: scale(1); 
+                text-shadow: 0 0 15px rgba(225, 190, 231, 0.6), 0 0 30px rgba(149, 117, 205, 0.2);
+                color: #e1bee7;
+            }
+            50% { 
+                transform: scale(1.03); 
+                text-shadow: 0 0 25px rgba(225, 190, 231, 0.95), 0 0 45px rgba(149, 117, 205, 0.5);
+                color: #f5f2fa;
+            }
         }
 
         /* نافذة الرسالة المنبثقة للرسائل المخبأة */
@@ -481,7 +501,8 @@
                 <div class="story-line" id="line1">Still doing this after all this time.</div>
                 <div class="story-line" id="line2">Some things never changed.</div>
                 <div class="story-line" id="line3">And thankfully…</div>
-                <div class="story-line" id="line4" class="final-heart-text">neither did the way I feel about you. 🤍</div>
+                <!-- 🔮 السطر الأخير المشع المضاف إليه تأثير التنفس التفاعلي (breathing-glow) -->
+                <div class="story-line final-heart-text breathing-glow" id="line4">neither did the way I feel about you. 🤍</div>
             </div>
         </div>
     </div>
@@ -535,7 +556,7 @@
             }, 700);
         }
 
-        // 🎬 منطق تشغيل الأزرار وظهور صورتك الخاصة للمخلل ثم توالي العبارات العاطفية
+        // 🎬 منطق تشغيل الأزرار وظهور صورتك الخاصة للمخلل ثم توالي العبارات العاطفية والتنفس للسطور الأخيرة
         function triggerStory() {
             document.getElementById('lastBtnRow').style.opacity = '0';
             setTimeout(() => { document.getElementById('lastBtnRow').style.display = 'none'; }, 400);
