@@ -1,196 +1,381 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>For Sulaf</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلة في غمرة السماء.. ✨</title>
+    <style>
+        /* الأجواء العامة - لافندر ونهدي بارد ساحر */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0d091a; /* ليل نهدي بارد عميق */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f5f2fa;
+            user-select: none;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        /* سحر الخلفية: هالات أورورا لافندر متحركة ببطء شديد */
+        .aurora-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(149, 117, 205, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(225, 190, 231, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(179, 157, 219, 0.08) 0%, transparent 60%);
+            filter: blur(60px);
+            z-index: 1;
+            animation: auroraMove 25s ease infinite alternate;
+        }
 
-body{
-background:#07070f;
-overflow:hidden;
-font-family:Segoe UI;
-color:white;
-height:100vh;
-}
+        @keyframes auroraMove {
+            0% { transform: scale(1) translate(0px, 0px); }
+            50% { transform: scale(1.1) translate(20px, -30px); }
+            100% { transform: scale(1) translate(-10px, 20px); }
+        }
 
-.stars{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 20% 20%, rgba(255,255,255,.8) 1px, transparent 2px),
-radial-gradient(circle at 70% 40%, rgba(255,255,255,.7) 1px, transparent 2px),
-radial-gradient(circle at 50% 80%, rgba(255,255,255,.6) 1px, transparent 2px);
-background-size:300px 300px;
-animation: drift 25s linear infinite;
-}
+        /* جزيئات النجوم المتلألئة */
+        .stars-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
 
-@keyframes drift{
-from{transform:scale(1);}
-to{transform:scale(1.25);}
-}
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            opacity: 0;
+        }
 
-.screen{
-position:absolute;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-transition:1s;
-}
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: var(--max-opacity); transform: scale(1.2); filter: drop-shadow(0 0 4px #fff); }
+        }
 
-.hidden{
-opacity:0;
-pointer-events:none;
-transform:scale(.96);
-}
+        /* الحاويات السحرية للمراحل (تأثير الزجاج المضيء) */
+        .card-container {
+            width: 85%;
+            max-width: 430px;
+            text-align: center;
+            z-index: 3;
+            padding: 40px 25px;
+            background: rgba(225, 215, 250, 0.02);
+            border-radius: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(209, 196, 233, 0.12);
+            box-shadow: 0 20px 50px rgba(13, 9, 26, 0.6), 
+                        inset 0 0 20px rgba(209, 196, 233, 0.05);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.85) translateY(30px);
+            filter: blur(10px);
+        }
 
-.card{
-backdrop-filter:blur(24px);
-background:rgba(255,255,255,.05);
-padding:45px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,.1);
-width:min(90%,500px);
-text-align:center;
-box-shadow:0 0 40px rgba(170,130,255,.15);
-}
+        /* أنيميشن الظهور الساحر الفائق النعومة */
+        .active-card {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
+            filter: blur(0px);
+        }
 
-h1{
-font-weight:300;
-margin-bottom:25px;
-}
+        /* حركة الأيقونات الحالمة */
+        .icon-art {
+            font-size: 2.8rem;
+            color: #d1c4e9;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 12px rgba(209, 196, 233, 0.6));
+            animation: floatingArt 5s ease-in-out infinite;
+        }
 
-input{
-width:100%;
-padding:16px;
-border:none;
-outline:none;
-border-radius:18px;
-margin:20px 0;
-background:rgba(255,255,255,.08);
-color:white;
-font-size:16px;
-}
+        @keyframes floatingArt {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
 
-button{
-padding:14px 35px;
-border:none;
-border-radius:20px;
-background:#8f74ff;
-color:white;
-cursor:pointer;
-font-size:16px;
-}
+        h2 {
+            font-weight: 300;
+            font-size: 1.35rem;
+            line-height: 1.9;
+            color: #e1bee7;
+            margin-bottom: 35px;
+            letter-spacing: 0.3px;
+        }
 
-.reveal{
-font-size:54px;
-margin-top:25px;
-opacity:0;
-transform:translateY(20px);
-transition:1.5s;
-text-shadow:0 0 30px rgba(255,255,255,.6);
-}
+        /* تصميم مدخلات النص التفاعلية الأنيقة */
+        .text-input {
+            width: 85%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(209, 196, 233, 0.25);
+            padding: 14px 20px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
 
-.show{
-opacity:1;
-transform:none;
-}
+        .text-input:focus {
+            border-color: #e1bee7;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 15px rgba(225, 190, 231, 0.2);
+        }
 
-.final-star{
-width:140px;
-height:140px;
-border-radius:50%;
-background:white;
-box-shadow:
-0 0 30px white,
-0 0 80px #b49cff,
-0 0 160px #8f74ff;
-animation:pulse 3s infinite;
-margin-bottom:40px;
-}
+        /* أزرار الخيارات التفاعلية الحية */
+        .option-btn {
+            display: block;
+            width: 100%;
+            background: rgba(209, 196, 233, 0.05);
+            border: 1px solid rgba(209, 196, 233, 0.15);
+            color: #f5f2fa;
+            padding: 16px;
+            margin: 14px 0;
+            border-radius: 25px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-@keyframes pulse{
-50%{
-transform:scale(1.12);
-}
-}
+        .option-btn:hover {
+            background: rgba(149, 117, 205, 0.25);
+            border-color: #e1bee7;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(149, 117, 205, 0.2);
+        }
 
-.final-text{
-font-size:26px;
-line-height:1.8;
-max-width:800px;
-text-align:center;
-padding:20px;
-}
-</style>
+        /* مدخل التاريخ الساحر */
+        input[type="date"] {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #9575cd;
+            padding: 14px 25px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: all 0.4s;
+        }
+        
+        input[type="date"]:focus {
+            border-color: #e1bee7;
+            box-shadow: 0 0 15px rgba(225, 190, 231, 0.3);
+        }
+
+        /* زر الإجراء الأساسي المشع */
+        .action-btn {
+            background: linear-gradient(135deg, #9575cd 0%, #7e57c2 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 25px rgba(126, 87, 194, 0.4);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 10px 30px rgba(149, 117, 205, 0.6);
+            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
+        }
+
+        /* نصوص البداية الإنجليزية الحالمة */
+        .en-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            color: #f5f2fa;
+            line-height: 1.9;
+        }
+
+        /* سحر ظهور اسم سلاف المضيء والمتحرك */
+        .reveal-text {
+            font-size: 1.8rem;
+            color: #e1bee7;
+            font-weight: bold;
+            display: block;
+            margin-top: 20px;
+            text-shadow: 0 0 20px rgba(225, 190, 231, 0.9), 0 0 40px rgba(149, 117, 205, 0.5);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 20px rgba(225, 190, 231, 0.8); }
+            50% { transform: scale(1.05); text-shadow: 0 0 35px rgba(225, 190, 231, 1), 0 0 50px rgba(149, 117, 205, 0.7); }
+        }
+
+        /* المرحلة النهائية: النجمة الكونية الكبيرة والتوهج المطلق */
+        .cosmic-star {
+            width: 75px;
+            height: 75px;
+            background: #fff;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin: 0 auto 30px auto;
+            filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
+            animation: finalPulse 4s infinite ease-in-out;
+        }
+
+        @keyframes finalPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 25px rgba(255,255,255,0.8)); }
+            50% { transform: scale(1.12) rotate(15deg); filter: drop-shadow(0 0 40px rgba(225, 190, 231, 0.95)); }
+        }
+
+        .final-message {
+            font-size: 1.18rem;
+            line-height: 2.3;
+            font-weight: 300;
+            color: #f5f2fa;
+            text-shadow: 0 2px 15px rgba(13, 9, 26, 0.7);
+        }
+
+        .highlight-text {
+            color: #e1bee7;
+            font-weight: 400;
+            display: block;
+            margin-top: 25px;
+            font-size: 1.35rem;
+            text-shadow: 0 0 10px rgba(225, 190, 231, 0.5);
+        }
+    </style>
 </head>
 <body>
 
-<div class="stars"></div>
+    <!-- هالات الأورورا الساحرة والنجوم الحية -->
+    <div class="aurora-bg"></div>
+    <div class="stars-container" id="starsContainer"></div>
 
-<div class="screen" id="screen1">
-<div class="card">
-<h1>What is the meaning of life?</h1>
-<input id="answer" placeholder="Type your answer...">
-<button onclick="reveal()">Submit</button>
-<div class="reveal" id="revealText">Sulaf 🤍</div>
-</div>
-</div>
+    <!-- البداية: السؤال الفلسفي الغامض -->
+    <div class="card-container active-card" id="introQuestion">
+        <div class="icon-art">🌌</div>
+        <h2 class="en-text" style="direction: ltr;">What is the meaning of life?</h2>
+        <input type="text" id="lifeAnswer" class="text-input" placeholder="Type your answer here..." dir="auto"><br><br>
+        <button class="action-btn" onclick="submitLifeAnswer()">Submit</button>
+    </div>
 
-<div class="screen hidden" id="screen2">
-<div class="card">
-<h1>Enter your birthday</h1>
-<input type="date" id="date">
-<button onclick="finish()">Continue</button>
-</div>
-</div>
+    <!-- صدمة الجواب الرومانسية اللطيفة -->
+    <div class="card-container" id="introReveal">
+        <div class="icon-art">🪐</div>
+        <p class="en-text" style="direction: ltr;">
+            Interesting answer...<br><br>
+            But mine has always been:
+            <span class="reveal-text">Sulaf.🤍</span>
+        </p>
+        <br>
+        <button class="action-btn" onclick="nextCard('introReveal', 'q1')">تابعي الرحلة ✨</button>
+    </div>
 
-<div class="screen hidden" id="screen3">
-<div class="final-star"></div>
+    <!-- السؤال الأول -->
+    <div class="card-container" id="q1">
+        <div class="icon-art">✨</div>
+        <h2>لو كانت الابتسامات تصنع مجرة، كم مجرة تظنين أنكِ صنعتِ بابتسامتكِ اليوم؟</h2>
+        <button class="option-btn" onclick="nextCard('q1', 'q2')">مجرة واحدة دافئة 🌌</button>
+        <button class="option-btn" onclick="nextCard('q1', 'q2')">كونٌ كامل لا ينتهي 🪐</button>
+        <button class="option-btn" onclick="nextCard('q1', 'q2')">لستُ متأكدة، لكن العالم أضاء فجأة 🤍</button>
+    </div>
 
-<div class="final-text">
-Some birthdays are dates.<br>
-Yours became destiny.<br><br>
+    <!-- السؤال الثاني -->
+    <div class="card-container" id="q2">
+        <div class="icon-art">🔮</div>
+        <h2>ما هو لونكِ المفضل عندما تشعرين بالسلام والهدوء التام؟</h2>
+        <button class="option-btn" onclick="nextCard('q2', 'q3')">اللافندر البارد الرايق 🪻</button>
+        <button class="option-btn" onclick="nextCard('q2', 'q3')">الوردي الدافئ الحنون 🌸</button>
+        <button class="option-btn" onclick="nextCard('q2', 'q3')">كحلي ليلي مليء بالنجوم 🌌</button>
+    </div>
 
-Happy Birthday to the girl<br>
-who quietly became<br>
-my favorite part of existence. 🤍
-</div>
-</div>
+    <!-- السؤال الثالث وتحديد التاريخ -->
+    <div class="card-container" id="q3">
+        <div class="icon-art">⏳</div>
+        <h2>تاريخ واحد مميز غيّر مجرى السماء للأبد وأهدى الأرض أرقّ النجمات.. هل تعرفينه؟</h2>
+        <input type="date" id="birthDate"><br>
+        <button class="action-btn" onclick="showFinalMagic()">فتح صندوق السماء</button>
+    </div>
 
-<script>
-function reveal(){
-let ans=document.getElementById("answer").value.trim();
-if(!ans) return;
+    <!-- المفاجأة النهائية -->
+    <div class="card-container" id="finalMagic">
+        <div class="cosmic-star"></div>
+        <div class="final-message">
+            في مثل هذا الشهر، تآمرت السماء لتصنع حدثاً استثنائياً.. <br>
+            رُسمت النجوم بدقة، وتألقت المجرات، <br>
+            لتُهدي الأرض أرقّ وأجمل نجمة تضيء كوني بالكامل.
+            <span class="highlight-text">كل عام وأنتِ العيد ونوري الدائم 🤍</span>
+        </div>
+    </div>
 
-let reveal=document.getElementById("revealText");
-reveal.classList.add("show");
+    <script {nonce}>
+        // توليد نجوم متلألئة عشوائية في الخلفية بشكل حيوي وعفوي
+        const container = document.getElementById('starsContainer');
+        const starCount = 60;
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            const size = Math.random() * 2.5 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            star.style.setProperty('--max-opacity', `${Math.random() * 0.7 + 0.3}`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            container.appendChild(star);
+        }
 
-setTimeout(()=>{
-document.getElementById("screen1").classList.add("hidden");
-document.getElementById("screen2").classList.remove("hidden");
-},3000);
-}
+        function submitLifeAnswer() {
+            const ans = document.getElementById('lifeAnswer').value.trim();
+            if(!ans) {
+                alert('Please share your thoughts first... ✨');
+                return;
+            }
+            nextCard('introQuestion', 'introReveal');
+        }
 
-function finish(){
-let date=document.getElementById("date").value;
-if(!date) return;
+        function nextCard(currentId, nextId) {
+            const current = document.getElementById(currentId);
+            const next = document.getElementById(nextId);
 
-document.getElementById("screen2").classList.add("hidden");
+            current.classList.remove('active-card');
+            
+            setTimeout(() => {
+                next.classList.add('active-card');
+            }, 500); 
+        }
 
-setTimeout(()=>{
-document.getElementById("screen3").classList.remove("hidden");
-},1000);
-}
-</script>
+        function showFinalMagic() {
+            const dateInput = document.getElementById('birthDate').value;
+            if (!dateInput) {
+                alert('الرجاء اختيار التاريخ المضيء أولاً 🌟');
+                return;
+            }
 
+            const current = document.getElementById('q3');
+            const final = document.getElementById('finalMagic');
+
+            current.classList.remove('active-card');
+
+            setTimeout(() => {
+                final.classList.add('active-card');
+            }, 700);
+        }
+    </script>
 </body>
 </html>
