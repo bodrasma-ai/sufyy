@@ -68,7 +68,7 @@
         /* الحاويات السحرية للمراحل (تأثير الزجاج المضيء) */
         .card-container {
             width: 85%;
-            max-width: 430px;
+            max-width: 440px;
             text-align: center;
             z-index: 3;
             padding: 40px 25px;
@@ -131,7 +131,6 @@
             text-align: center;
             margin-bottom: 20px;
             transition: all 0.4s ease;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .text-input:focus {
@@ -173,15 +172,8 @@
             outline: none;
             text-align: center;
             margin-bottom: 30px;
-            transition: all 0.4s;
-        }
-        
-        input[type="date"]:focus {
-            border-color: #e1bee7;
-            box-shadow: 0 0 15px rgba(225, 190, 231, 0.3);
         }
 
-        /* زر الإجراء الأساسي المشع */
         .action-btn {
             background: linear-gradient(135deg, #9575cd 0%, #7e57c2 100%);
             color: white;
@@ -197,10 +189,8 @@
         .action-btn:hover {
             transform: scale(1.05) translateY(-2px);
             box-shadow: 0 10px 30px rgba(149, 117, 205, 0.6);
-            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
         }
 
-        /* نصوص البداية الإنجليزية الحالمة */
         .en-text {
             font-family: 'Courier New', Courier, monospace;
             font-size: 1.25rem;
@@ -209,7 +199,6 @@
             line-height: 1.9;
         }
 
-        /* سحر ظهور اسم سلاف المضيء والمتحرك */
         .reveal-text {
             font-size: 1.8rem;
             color: #e1bee7;
@@ -221,47 +210,179 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); text-shadow: 0 0 20px rgba(225, 190, 231, 0.8); }
-            50% { transform: scale(1.05); text-shadow: 0 0 35px rgba(225, 190, 231, 1), 0 0 50px rgba(149, 117, 205, 0.7); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* المرحلة النهائية: النجمة الكونية الكبيرة والتوهج المطلق */
         .cosmic-star {
-            width: 75px;
-            height: 75px;
+            width: 70px;
+            height: 70px;
             background: #fff;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            margin: 0 auto 30px auto;
-            filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
+            margin: 0 auto 20px auto;
+            filter: drop-shadow(0 0 25px rgba(255,255,255,0.8));
             animation: finalPulse 4s infinite ease-in-out;
         }
 
         @keyframes finalPulse {
-            0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 25px rgba(255,255,255,0.8)); }
-            50% { transform: scale(1.12) rotate(15deg); filter: drop-shadow(0 0 40px rgba(225, 190, 231, 0.95)); }
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.08) rotate(10deg); }
         }
 
         .final-message {
-            font-size: 1.18rem;
-            line-height: 2.3;
+            font-size: 1.12rem;
+            line-height: 2.1;
             font-weight: 300;
             color: #f5f2fa;
-            text-shadow: 0 2px 15px rgba(13, 9, 26, 0.7);
         }
 
         .highlight-text {
             color: #e1bee7;
             font-weight: 400;
             display: block;
-            margin-top: 25px;
-            font-size: 1.35rem;
-            text-shadow: 0 0 10px rgba(225, 190, 231, 0.5);
+            margin-top: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* 🪐 قسم الكواكب الطائرة حول الرسالة */
+        .planets-orbit {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.5s ease-in-out 1.5s; /* تظهر بعد الرسالة بفترة */
+        }
+
+        .planet-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            animation: floatingPlanet var(--p-delay) ease-in-out infinite alternate;
+        }
+
+        @keyframes floatingPlanet {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-10px) scale(1.03); }
+        }
+
+        .planet-sphere {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #e1bee7 0%, #9575cd 50%, #4a148c 100%);
+            box-shadow: 0 0 15px rgba(149, 117, 205, 0.6);
+            transition: all 0.4s ease;
+        }
+
+        .planet-item:hover .planet-sphere {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(225, 190, 231, 0.9);
+        }
+
+        .planet-label {
+            font-size: 0.8rem;
+            color: #d1c4e9;
+            margin-top: 8px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ⏳ تصميم عدّاد اللحظات الثمينة */
+        .precious-counter {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(209, 196, 233, 0.1);
+            opacity: 0;
+            transition: all 1.5s ease-in-out 2.5s; /* يظهر كآخر تفصيل */
+        }
+
+        .counter-title {
+            font-size: 0.85rem;
+            color: #b39ddb;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .counter-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .counter-block {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(209, 196, 233, 0.05);
+            min-width: 50px;
+        }
+
+        .counter-num {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #e1bee7;
+            font-family: monospace;
+        }
+
+        .counter-lbl {
+            font-size: 0.65rem;
+            color: #9575cd;
+            margin-top: 2px;
+        }
+
+        /* نافذة الرسالة المنبثقة السحرية عند الضغط على كوكب */
+        .planet-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(13, 9, 26, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .modal-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            width: 80%;
+            max-width: 350px;
+            background: rgba(20, 15, 38, 0.9);
+            border: 1px solid rgba(225, 190, 231, 0.2);
+            padding: 30px 25px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .modal-active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #f5f2fa;
+            font-weight: 300;
+            margin-bottom: 25px;
         }
     </style>
 </head>
 <body>
 
-    <!-- هالات الأورورا الساحرة والنجوم الحية -->
     <div class="aurora-bg"></div>
     <div class="stars-container" id="starsContainer"></div>
 
@@ -288,7 +409,7 @@
     <!-- السؤال الأول -->
     <div class="card-container" id="q1">
         <div class="icon-art">✨</div>
-        <h2>لو كانت الابتسامات تصنع مجرة، كم مجرة تظنين أنكِ صنعتِ بابتسامتكِ اليوم؟</h2>
+        <h2>لو كانت الابتسامات تصنع مجرة، كم مجرة تظنين أنكِ صنعتِ بابتسامتكِ اليوم?</h2>
         <button class="option-btn" onclick="nextCard('q1', 'q2')">مجرة واحدة دافئة 🌌</button>
         <button class="option-btn" onclick="nextCard('q1', 'q2')">كونٌ كامل لا ينتهي 🪐</button>
         <button class="option-btn" onclick="nextCard('q1', 'q2')">لستُ متأكدة، لكن العالم أضاء فجأة 🤍</button>
@@ -311,19 +432,54 @@
         <button class="action-btn" onclick="showFinalMagic()">فتح صندوق السماء</button>
     </div>
 
-    <!-- المفاجأة النهائية -->
+    <!-- المفاجأة النهائية المكتملة السحر -->
     <div class="card-container" id="finalMagic">
         <div class="cosmic-star"></div>
         <div class="final-message">
-            في مثل هذا اليوم، تآمرت السماء لتصنع حدثاً استثنائياً.. <br>
+            في مثل هذا الشهر، تآمرت السماء لتصنع حدثاً استثنائياً.. <br>
             رُسمت النجوم بدقة، وتألقت المجرات، <br>
             لتُهدي الأرض أرقّ وأجمل نجمة تضيء كوني بالكامل.
             <span class="highlight-text">كل عام وأنتِ العيد ونوري الدائم 🤍</span>
         </div>
+
+        <!-- 🪐 كواكب الأمنيات الطائرة حول الرابط -->
+        <div class="planets-orbit" id="planetsBox">
+            <div class="planet-item" style="--p-delay: 4s;" onclick="openSecret('secret')">
+                <div class="planet-sphere"></div>
+                <span class="planet-label">سر صغير ✨</span>
+            </div>
+            <div class="planet-item" style="--p-delay: 4.6s;" onclick="openSecret('wish')">
+                <div class="planet-sphere" style="background: radial-gradient(circle at 30% 30%, #f4f0fa 0%, #b39ddb 60%, #5e35b1 100%);"></div>
+                <span class="planet-label">أمنية حنونة 🔮</span>
+            </div>
+            <div class="planet-item" style="--p-delay: 3.4s;" onclick="openSecret('promise')">
+                <div class="planet-sphere" style="background: radial-gradient(circle at 30% 30%, #e1bee7 0%, #7e57c2 50%, #311b92 100%);"></div>
+                <span class="planet-label">وعد دائم 🤍</span>
+            </div>
+        </div>
+
+        <!-- ⏳ عدّاد اللحظات المضيئة اللانهائي -->
+        <div class="precious-counter" id="counterBox">
+            <div class="counter-title">اللحظات الثمينة المضيئة بوجودكِ.. ✨</div>
+            <div class="counter-grid">
+                <div class="counter-block"><div class="counter-num" id="c-days">00</div><div class="counter-lbl">يوم</div></div>
+                <div class="counter-block"><div class="counter-num" id="c-hours">00</div><div class="counter-lbl">ساعة</div></div>
+                <div class="counter-block"><div class="counter-num" id="c-mins">00</div><div class="counter-lbl">دقيقة</div></div>
+                <div class="counter-block"><div class="counter-num" id="c-secs">00</div><div class="counter-lbl">ثانية</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- النافذة المنبثقة للرسائل المخبأة -->
+    <div class="planet-modal" id="planetModal" onclick="closeSecret()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-text" id="modalText"></div>
+            <button class="action-btn" style="padding: 10px 30px; font-size: 0.9rem;" onclick="closeSecret()">إغلاق</button>
+        </div>
     </div>
 
     <script {nonce}>
-        // توليد نجوم متلألئة عشوائية في الخلفية بشكل حيوي وعفوي
+        // توليد نجوم الخلفية
         const container = document.getElementById('starsContainer');
         const starCount = 60;
         for (let i = 0; i < starCount; i++) {
@@ -342,39 +498,63 @@
 
         function submitLifeAnswer() {
             const ans = document.getElementById('lifeAnswer').value.trim();
-            if(!ans) {
-                alert('Please share your thoughts first... ✨');
-                return;
-            }
+            if(!ans) { alert('Please share your thoughts first... ✨'); return; }
             nextCard('introQuestion', 'introReveal');
         }
 
         function nextCard(currentId, nextId) {
-            const current = document.getElementById(currentId);
-            const next = document.getElementById(nextId);
-
-            current.classList.remove('active-card');
-            
-            setTimeout(() => {
-                next.classList.add('active-card');
-            }, 500); 
+            document.getElementById(currentId).classList.remove('active-card');
+            setTimeout(() => { document.getElementById(nextId).classList.add('active-card'); }, 500); 
         }
 
         function showFinalMagic() {
             const dateInput = document.getElementById('birthDate').value;
-            if (!dateInput) {
-                alert('الرجاء اختيار التاريخ المضيء أولاً 🌟');
-                return;
-            }
+            if (!dateInput) { alert('الرجاء اختيار التاريخ المضيء أولاً 🌟'); return; }
 
-            const current = document.getElementById('q3');
-            const final = document.getElementById('finalMagic');
-
-            current.classList.remove('active-card');
-
-            setTimeout(() => {
-                final.classList.add('active-card');
+            document.getElementById('q3').classList.remove('active-card');
+            setTimeout(() => { 
+                document.getElementById('finalMagic').classList.add('active-card');
+                // تفعيل أنيميشن الكواكب والعداد بعد ظهور الكرت بنعومة
+                setTimeout(() => { document.getElementById('planetsBox').style.opacity = '1'; document.getElementById('planetsBox').style.transform = 'translateY(0)'; }, 500);
+                setTimeout(() => { document.getElementById('counterBox').style.opacity = '1'; }, 1200);
+                startCounter(dateInput);
             }, 700);
+        }
+
+        // ⏳ دالة تشغيل عدّاد اللحظات اللانهائي المحدث لايف كل ثانية
+        function startCounter(birthDateString) {
+            const startDate = new Date(birthDateString);
+            setInterval(() => {
+                const now = new Date();
+                let diff = now - startDate;
+                if (diff < 0) diff = 0;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / (1000 * 60)) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('c-days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('c-hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('c-mins').innerText = mins.toString().padStart(2, '0');
+                document.getElementById('c-secs').innerText = secs.toString().padStart(2, '0');
+            }, 1000);
+        }
+
+        // 🪐 التحكم بفتح الرسائل العميقة المخبأة داخل الكواكب
+        const texts = {
+            secret: "في مثل هذا الشهر لم تولدي أنتِ فقط.. بل ولد معه الجزء الأجمل والأحنّ من عمري الحقيقي. 🤍",
+            wish: "أتمنى أن تظل أيامكِ برقة وعفوية قلبكِ، وأن تبتسمي دائماً لأن ابتسامتكِ توازن وتضيء هذا الكون بالكامل. 🔮",
+            promise: "سأبقى دائماً هنا، أحبّ النجمة الفريدة التي أضاءت عتمتي وآوت روحي.. كل عام وأنتِ كل أعيادي الدائمة. ✨"
+        };
+
+        function openSecret(type) {
+            document.getElementById('modalText').innerText = texts[type];
+            document.getElementById('planetModal').classList.add('modal-active');
+        }
+
+        function closeSecret() {
+            document.getElementById('planetModal').classList.remove('modal-active');
         }
     </script>
 </body>
